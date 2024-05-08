@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <help_text>Space for diagram notes</help_text>
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>253</y>
+      <w>165</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Profil
+--
+-id: int
+-nom : string
+-prenom : string
+-email : string
+-password
+-localisation 
+#idUserType
+--
++ajouter()
++modifier()
++supprimer()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>132</x>
+      <y>451</y>
+      <w>165</w>
+      <h>319</h>
+    </coordinates>
+    <panel_attributes>Trajet 
+--
+-id: int
+-départ: string
+-destination:string
+-distance : int
+-coudis : int 
+-prixkm: int
+-revenuZem : int 
+-benefStand : int 
+-idClient 
+-idAbo
+-idZem :int
+-idStand : int 
+
+--
++ajouter()
++modifier()
++supprimer()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>385</x>
+      <y>319</y>
+      <w>99</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;70.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>231</y>
+      <w>165</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>Abonement
+--
+
+-id: int 
+-datedeb : string
+-datefin: string
+-durée: string
+-prix: int
+--
++ajouter()
++modifier()
++supprimer()
+
+	</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>451</x>
+      <y>0</y>
+      <w>187</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>UserType
+--
+-id: id
+-libellé: string
+-idModule : object
+
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+-- Resp2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>198</y>
+      <w>33</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>11</y>
+      <w>187</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>Module
+--
+-idModule:int 
+-libelé: string 
+-listfontion : array 
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+-- Resp2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>627</x>
+      <y>88</y>
+      <w>275</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1
+lier&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>308</y>
+      <w>187</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>Fonctionnalité	
+--
+-idFonction: int
+-libFonction : int
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+-- Resp2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>968</x>
+      <y>209</y>
+      <w>66</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1
+lier&gt;</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>154</x>
+      <y>308</y>
+      <w>110</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;80.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>242</x>
+      <y>253</y>
+      <w>154</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>Client 
+--
+-idClient : int
+-idProfil
+
+--
++ajouter()
++modifier()
++supprimer()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>198</x>
+      <y>319</y>
+      <w>33</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+</diagram>

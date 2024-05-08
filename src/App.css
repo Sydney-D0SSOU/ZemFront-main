@@ -1,0 +1,202 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #f092cc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.embla {
+  overflow: hidden; /* Masquer le dépassement des images */
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+
+/* App.css */
+
+/* Sidebar */
+.sidebar {
+  width: 18%;
+  position: fixed;
+  height: 100%;
+  border-right: 2px solid #3B3B3B;
+  background-color: #1F1F1F;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  height: 30vh;
+  border-bottom: 2px solid #3B3B3B;
+  padding: 1.75rem;
+  position: relative;
+}
+
+.logo img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-text {
+  color: #8E8E8E;
+  position: absolute;
+  top: 90%;
+}
+
+.sidebar-menu {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+  padding: 1rem;
+  border-bottom: 2px solid #3B3B3B;
+  height: 40vh;
+  position: relative;
+}
+
+.menu-item {
+  display: flex;
+  gap: 0.75rem;
+  color: white;
+  font-size: 16px;
+}
+
+.menu-item a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  background-color: #1F1F1F;
+  border-bottom: 2px solid #3B3B3B;
+  position: absolute;
+  top: 0;
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.75rem;
+}
+
+.dashboard-header.mobile {
+  left: 0;
+}
+
+.dashboard-header.desktop {
+  left: 18%;
+}
+
+.header-title {
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: white;
+}
+
+.search-field {
+  background-color: pink;
+  color: white;
+  position: absolute;
+  left: 45%;
+  top: 0;
+}
+
+.account-icon {
+  color: blue;
+  cursor: pointer;
+  position: absolute;
+  top: 36px;
+  right: 10%;
+}
+
+/* Add Admin Section */
+.add-admin-section {
+  background-color: #1F1F1F;
+  border-bottom: 2px solid #3B3B3B;
+  position: absolute;
+  top: 20%;
+  height: 70%;
+  width: 82%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.add-admin-section.mobile {
+  width: 100%;
+}
+
+.add-admin-section .section-title {
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.add-admin-section .form {
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.add-admin-section .input-field {
+  margin-bottom: 1rem;
+}
+
+.add-admin-section .submit-button {
+  background-color: #005BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.add-admin-section .logout-icon {
+  color: blue;
+  cursor: pointer;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
