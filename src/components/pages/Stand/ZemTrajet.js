@@ -51,22 +51,22 @@ function TrajetForm({ onSubmit }) {
             setLoading(false);
         }
     };
-// Fonction pour rechercher le Zem par numéro de plaque
-const searchZem = async (numeroPlaque) => {
-    try {
-        const response = await axios.get(`http://localhost:8000/api/users/search/${numeroPlaque}`);
-        const zemId = response.data.id; // Récupérer l'ID du Zem depuis la réponse
-        setFormData({
-            ...formData,
-            zem_id: zemId // Mettre à jour l'ID du Zem dans le formulaire
-        });
-        setZemName(response.data.name); // Mettre à jour le nom du Zem
-        console.log(response.data.name)
-    } catch (error) {
-        console.error('Erreur lors de la recherche du Zem:', error);
-        alert('Une erreur s\'est produite lors de la recherche du Zem');
-    }
-};
+    // Fonction pour rechercher le Zem par numéro de plaque
+    const searchZem = async (numeroPlaque) => {
+        try {
+            const response = await axios.get(`http://localhost:8000/api/users/search/${numeroPlaque}`);
+            const zemId = response.data.id; // Récupérer l'ID du Zem depuis la réponse
+            setFormData({
+                ...formData,
+                zem_id: zemId // Mettre à jour l'ID du Zem dans le formulaire
+            });
+            setZemName(response.data.name); // Mettre à jour le nom du Zem
+            console.log(response.data.name)
+        } catch (error) {
+            console.error('Erreur lors de la recherche du Zem:', error);
+            alert('Une erreur s\'est produite lors de la recherche du Zem');
+        }
+    };
 
     const showAlert = (type, message) => {
         Swal.fire({
@@ -76,178 +76,188 @@ const searchZem = async (numeroPlaque) => {
         });
     };
 
-    const inputStyle = { backgroundColor: '', borderRadius: '5px', color: 'white', border: '1px solid white' };
+    const inputStyle = { backgroundColor: 'gray', borderRadius: '5px', color: 'white', border: '1px solid white' };
     const mainContentWidth = `calc(100% - 18%)`; // 18% est la largeur du menu
 
     return (
-        <div>
-            <MenuStand/>
-        <div className="flex flex-col w-full">
+        <div className="flex">
+            <MenuStand />
+            <div className="w-full  overflow-auto">
+                <div className="border-[#3B3B3B] border-b-2 bg-[#1F1F1F] ">
+                    <div className="flex p-4">
+                        <div className="w-full">
+                            <div className="border border-gray-500 rounded p-4">
+                                <h2 className="text-lg font-bold mb-4 text-white text-center">Enregistrer un nouveau trajet</h2>
+                                <form onSubmit={handleSubmit} className="p-4">
+                                    <div className="border border-gray-500 rounded p-4">
+                                        <div className="flex justify-between">
+                                            <TextField
+                                                name="datedeb"
+                                                label="Date de début"
+                                                type="date"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={formData.datedeb}
+                                                onChange={handleChange}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                            <TextField
+                                                name="datefin"
+                                                label="Date de fin"
+                                                type="date"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={formData.datefin}
+                                                onChange={handleChange}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                        </div>
+                                        <div className="flex justify-between">
 
-          <div className="flex-grow ml-[18%]">
-            <div className="border-[#3B3B3B] border-b-2 bg-[#333333] min-h-screen overflow-auto">
-              <div className="flex justify-center items-center h-full mt-10">
-                <div style={{ width: mainContentWidth }} className="border border-gray-500 rounded p-4">
+                                            <TextField
+                                                name="duree"
+                                                label="Durée"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={formData.duree}
+                                                onChange={handleChange}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                            <TextField
+                                                name="prix"
+                                                label="Prix"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={formData.prix}
+                                                onChange={handleChange}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                        </div>
+                                        <div className="flex justify-between">
 
-                <h2 className="text-lg font-bold mb-4 text-white text-center">Enregistrer un nouveau trajet</h2>
-                <form onSubmit={handleSubmit} className="p-4">
-                    <div className="border border-gray-500 rounded p-4">
-                        <div className="flex justify-between">
-                            <TextField
-                                name="datedeb"
-                                label="Date de début"
-                                type="date" 
-                                variant="filled"
-                                fullWidth
-                                margin="normal"
-                                value={formData.datedeb}
-                                onChange={handleChange}
-                                InputLabelProps={{ style: { color: 'orange' } }}
-                                InputProps={{ style: inputStyle }}
-                            />
-                            <TextField
-                                name="datefin"
-                                label="Date de fin"
-                                type="date"
-                                variant="filled"
-                                fullWidth
-                                margin="normal"
-                                value={formData.datefin}
-                                onChange={handleChange}
-                                InputLabelProps={{ style: { color: 'orange' } }}
-                                InputProps={{ style: inputStyle }}
-                            />
+                                            <TextField
+                                                name="depart"
+                                                label="Départ"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={formData.depart}
+                                                onChange={handleChange}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                            <TextField
+                                                name="destination"
+                                                label="Destination"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={formData.destination}
+                                                onChange={handleChange}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                        </div>
+                                        <div className="flex justify-between">
+
+                                            <TextField
+                                                name="distance"
+                                                label="Distance"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={formData.distance}
+                                                onChange={handleChange}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                            <TextField
+                                                name="prixkm"
+                                                label="Prix par kilomètre"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={formData.prixkm}
+                                                onChange={handleChange}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                        </div>
+                                        <TextField
+                                            name="revenuZem"
+                                            label="Revenu Zem"
+                                            variant="filled"
+                                            fullWidth
+                                            margin="normal"
+                                            value={formData.revenuZem}
+                                            onChange={handleChange}
+                                            InputLabelProps={{ style: { color: 'orange' } }}
+                                            InputProps={{ style: inputStyle }}
+                                        />
+                                        <div className="flex justify-between">
+
+                                            <TextField
+                                                name="benefStand"
+                                                label="Bénéfice Stand"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={formData.benefStand}
+                                                onChange={handleChange}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                            <TextField
+                                                name="zem_id"
+                                                label="Numéro de plaque du Zem"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                onChange={(e) => searchZem(e.target.value)}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle }}
+                                            />
+                                        </div>
+                                        {zemName && ( // Afficher le nom du Zem si disponible
+                                            <TextField
+                                                name="zemName"
+                                                label="Nom du Zem"
+                                                variant="filled"
+                                                fullWidth
+                                                margin="normal"
+                                                value={zemName}
+                                                InputLabelProps={{ style: { color: 'orange' } }}
+                                                InputProps={{ style: inputStyle, color: 'white' }}
+                                            />
+                                        )}
+
+                                    </div>
+
+                                    <Button
+                                        type="submit"
+                                        variant="contained"
+                                        color="primary"
+                                        fullWidth
+                                        style={{ marginTop: '1rem', backgroundColor: '#ff5722', borderRadius: '5px' }}
+                                        disabled={loading}
+                                    >
+                                        {loading ? 'Enregistrement en cours...' : 'Enregistrer'}
+                                    </Button>
+                                </form>
+                            </div>
                         </div>
-                        <TextField
-                            name="duree"
-                            label="Durée"
-                            variant="filled"
-                            fullWidth
-                            margin="normal"
-                            value={formData.duree}
-                            onChange={handleChange}
-                            InputLabelProps={{ style: { color: 'orange' } }}
-                            InputProps={{ style: inputStyle }}
-                        />
-                        <TextField
-                            name="prix"
-                            label="Prix"
-                            variant="filled"
-                            fullWidth
-                            margin="normal"
-                            value={formData.prix}
-                            onChange={handleChange}
-                            InputLabelProps={{ style: { color: 'orange' } }}
-                            InputProps={{ style: inputStyle }}
-                        />
-                        <TextField
-                            name="depart"
-                            label="Départ"
-                            variant="filled"
-                            fullWidth
-                            margin="normal"
-                            value={formData.depart}
-                            onChange={handleChange}
-                            InputLabelProps={{ style: { color: 'orange' } }}
-                            InputProps={{ style: inputStyle }}
-                        />
-                        <TextField
-                            name="destination"
-                            label="Destination"
-                            variant="filled"
-                            fullWidth
-                            margin="normal"
-                            value={formData.destination}
-                            onChange={handleChange}
-                            InputLabelProps={{ style: { color: 'orange' } }}
-                            InputProps={{ style: inputStyle }}
-                        />
-                        <TextField
-                            name="distance"
-                            label="Distance"
-                            variant="filled"
-                            fullWidth
-                            margin="normal"
-                            value={formData.distance}
-                            onChange={handleChange}
-                            InputLabelProps={{ style: { color: 'orange' } }}
-                            InputProps={{ style: inputStyle }}
-                        />
-                        <TextField
-                            name="prixkm"
-                            label="Prix par kilomètre"
-                            variant="filled"
-                            fullWidth
-                            margin="normal"
-                            value={formData.prixkm}
-                            onChange={handleChange}
-                            InputLabelProps={{ style: { color: 'orange' } }}
-                            InputProps={{ style: inputStyle }}
-                        />
-                        <TextField
-                            name="revenuZem"
-                            label="Revenu Zem"
-                            variant="filled"
-                            fullWidth
-                            margin="normal"
-                            value={formData.revenuZem}
-                            onChange={handleChange}
-                            InputLabelProps={{ style: { color: 'orange' } }}
-                            InputProps={{ style: inputStyle }}
-                        />
-                        <TextField
-                            name="benefStand"
-                            label="Bénéfice Stand"
-                            variant="filled"
-                            fullWidth
-                            margin="normal"
-                            value={formData.benefStand}
-                            onChange={handleChange}
-                            InputLabelProps={{ style: { color: 'orange' } }}
-                            InputProps={{ style: inputStyle }}
-                        />
-                        <TextField
-                        name="zem_id"
-                        label="Numéro de plaque du Zem"
-                        variant="filled"
-                        fullWidth
-                        margin="normal"
-                        onChange={(e) => searchZem(e.target.value)}
-                        InputLabelProps={{ style: { color: 'orange' } }}
-                        InputProps={{ style: inputStyle }}
-                    />
-                    {zemName && ( // Afficher le nom du Zem si disponible
-                        <TextField
-                            name="zemName"
-                            label="Nom du Zem"
-                            variant="filled"
-                            fullWidth
-                            margin="normal"
-                            value={zemName}
-                            InputLabelProps={{ style: { color: 'orange' } }}
-                        InputProps={{ style: inputStyle,color: 'white' }}
-                        />
-                    )}
-
                     </div>
-
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        style={{ marginTop: '1rem', backgroundColor: '#ff5722', borderRadius: '5px' }}
-                        disabled={loading}
-                    >
-                        {loading ? 'Enregistrement en cours...' : 'Enregistrer'}
-                    </Button>
-                </form>
-        </div>
-          </div>
-            </div>
+                </div>
             </div>
         </div>
-    </div>
     );
 }
 
