@@ -78,7 +78,7 @@ function MenuStand() {
                 </Menu>
                 <div className="flex gap-3">
                     <GroupIcon fontSize="small" style={{ color: 'white' }} className='' />
-                    <div className="text-white text-[16px]"><a href="/">Liste Users</a></div>
+                    <div className="text-white text-[16px]"><a href="/listUser">Liste Users</a></div>
                 </div>
             </div>
 

@@ -2,61 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { MenuItem, TextField } from '@mui/material';
 import axios from 'axios';
 import { useMediaQuery } from '@mui/material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import MenuListComposition from '../../DropDown';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Swal from 'sweetalert2';
-import MenuStand from './MenuStand';
-import { useAuth } from '../../Auth/AuthContext'; // Importez useAuth pour accéder aux données de l'utilisateur
-
-function FirstPart() {
-    return (
-       React.createElement(MenuStand,null)
-    );
-}
-
-function ScndPart() {
-    const isMobile = useMediaQuery('(max-width:700px)');
-    const [isLoggedIn, setIsLoggedIn] = useState(true); // Assume que l'utilisateur est connecté
-
-   
-    const handleLogout = () => {
-        // Supprimer les données utilisateur du sessionStorage
-        sessionStorage.removeItem('user');
-        // Effectuer d'autres opérations de déconnexion si nécessaire
-        Swal.fire({
-            icon: 'success',
-            title: 'Déconnexion réussie',
-            showConfirmButton: false,
-            timer: 1500
-        });
-      };
-      
-
-    return (
-        <div className={`absolute bg-[#1F1F1F] top-0 border-[#3B3B3B] border-b-2  h-[20%] ${isMobile ? 'left-[0] w-full ' : 'left-[18%] w-[82%] '}`} style={{ backgroundColor: '#333333' }}>
-            <div className={`font-bold text-lg absolute top-[50px] text-white ${isMobile ? 'left-[20%]' : 'left-[15%]'}`}>Dashboard</div>
-            {isMobile && isLoggedIn && <MenuListComposition />}
-            <TextField
-                size="small"
-                variant="filled"
-                label="Rechercher un Zem"
-                placeholder="Entez son Identifiant"
-                InputProps={{ style: { backgroundColor: 'pink', color: 'white' } }} // Change la couleur de fond et de texte de la barre de recherche
-                className={`absolute ${isMobile ? 'left-[45%] top-[0px]' : 'left-[50%] top-[30px]'}`}
-            />
-           <AccountCircleIcon
-                fontSize="large"
-                style={{ color: 'blue', cursor: 'pointer' }}
-                className={`absolute top-[36px] ${isMobile ? 'left-[90%]' : 'left-[90%]'}`}
-                onClick={handleLogout} // Ajoute la fonction pour se déconnecter au clic
-            />
-        </div>
-    );
-}
+import logo from '../../Images/logo2.png';
+import { useAuth } from '../../Auth/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function AddZem() {
     const isMobile = useMediaQuery('(max-width:700px)');
-    const { user } = useAuth(); // Utilisez useAuth pour obtenir les données de l'utilisateur
+    const { user } = useAuth();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -65,7 +20,7 @@ function AddZem() {
         password: '',
         numero_plaque: '',
         user_type_id: '',
-        added_by: user ? user.user.id  : '' , // Ajoutez user.id à added_by
+        added_by: user ? user.user.id : '',
     });
     const [userTypes, setUserTypes] = useState([]);
 
@@ -95,18 +50,16 @@ function AddZem() {
         try {
             const formDataWithUser = {
                 ...formData,
-                added_by: user.user.id // Utilisez user.id pour spécifier l'utilisateur ajoutant le Zem
+                added_by: user.user.id
             };
             await axios.post('http://localhost:8000/api/users', formDataWithUser);
-            console.log('Un zem ajouté avec succès',user.user.id,formDataWithUser);
-            // Afficher une alerte de succès avec SweetAlert
+            console.log('Un zem ajouté avec succès', user.user.id, formDataWithUser);
             Swal.fire({
                 icon: 'success',
                 title: 'Un Zem ajouté avec succès',
                 showConfirmButton: false,
                 timer: 1500
             });
-            // Réinitialiser le formulaire après soumission
             setFormData({
                 name: '',
                 email: '',
@@ -114,11 +67,10 @@ function AddZem() {
                 password: '',
                 numero_plaque: '',
                 user_type_id: '',
-                added_by:user.user.id // Assurez-vous de réinitialiser également added_by avec user.id
+                added_by: user.user.id
             });
         } catch (error) {
             console.error('Erreur lors de l\'ajout du Zem:', error);
-            // Afficher une alerte d'erreur avec SweetAlert
             Swal.fire({
                 icon: 'error',
                 title: 'Erreur lors de l\'ajout du Zem',
@@ -127,94 +79,98 @@ function AddZem() {
         }
     };
 
+    const handleBackClick = () => {
+        navigate(-1);
+    };
+
     return (
-        <div className='bg-[#1F1F1F]'>
-            {!isMobile && <FirstPart />}
-            <div className="flex flex-col w-full">
-                <ScndPart />
-                <div className="flex-grow">
-                    <div className={`overflow-auto absolute top-[20%] border-[#3B3B3B] border-b-2 bg-[#1F1F1F] h-[80%] ${isMobile ? 'w-full left-0' : 'w-[82%] left-[18%]'}`}>
-                        <div className={`font-bold text-lg text-white p-4 ${isMobile ? 'text-center' : 'text-left'}`}>Ajouter un Zem 🏍️</div>
-                        <form onSubmit={handleSubmit} className="p-4">
-                            <TextField
-                                name="name"
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                size="small"
-                                variant="filled"
-                                label="Nom"
-                                fullWidth
-                                className="mb-2"
-                                InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
-                            />
-                            <TextField
-                                name="email"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                size="small"
-                                variant="filled"
-                                label="Email"
-                                fullWidth
-                                className="mb-2"
-                                InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
-                            />
-                            <TextField
-                                name="contact"
-                                value={formData.contact}
-                                onChange={handleInputChange}
-                                size="small"
-                                variant="filled"
-                                label="Contact"
-                                fullWidth
-                                className="mb-2"
-                                InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
-                            />
-                            <TextField
-                                name="password"
-                                value={formData.password}
-                                onChange={handleInputChange}
-                                type="password"
-                                size="small"
-                                variant="filled"
-                                label="Mot de passe"
-                                fullWidth
-                                className="mb-2"
-                                InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
-                            />
-                            <TextField
-                                name="numero_plaque"
-                                value={formData.numero_plaque}
-                                onChange={handleInputChange}
-                                size="small"
-                                variant="filled"
-                                label="Numéro de plaque"
-                                fullWidth
-                                className="mb-2"
-                                InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
-                            />
-                            <TextField
-                                select
-                                name="user_type_id"
-                                value={formData.user_type_id}
-                                onChange={handleInputChange}
-                                size="small"
-                                variant="filled"
-                                label="Type d'utilisateur"
-                                fullWidth
-                                className="mb-2"
-                                InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
-                            >
-                                <MenuItem value="">Sélectionnez un type d'utilisateur</MenuItem>
-                                {userTypes.map(userType => (
-                                    <MenuItem key={userType.id} value={userType.id}>{userType.libelle}</MenuItem>
-                                ))}
-                            </TextField>
-                            <button type="submit" className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-800">Ajouter</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div className="flex flex-col items-center justify-center min-h-screen bg-[#1F1F1F] p-4 relative">
+            <ArrowBackIcon 
+                onClick={handleBackClick} 
+                style={{ color: '#FFDE59', cursor: 'pointer', position: 'absolute', top: '20px', left: '20px', fontSize: '2rem', fontWeight: 'bold' }} 
+            />
+            <img src={logo} alt="Logo" className="mb-4" style={{ width: isMobile ? '100px' : '150px' }} />
+            <h3 className="text-[#FFDE59] text-lg font-bold mb-4">Ajouter un Zem 🏍️</h3>
+            <form onSubmit={handleSubmit} className="w-full max-w-md">
+                <TextField
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    size="small"
+                    variant="filled"
+                    label="Nom"
+                    fullWidth
+                    className="mb-2"
+                    InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
+                />
+                <TextField
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    size="small"
+                    variant="filled"
+                    label="Email"
+                    fullWidth
+                    className="mb-2"
+                    InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
+                />
+                <TextField
+                    name="contact"
+                    value={formData.contact}
+                    onChange={handleInputChange}
+                    size="small"
+                    variant="filled"
+                    label="Contact"
+                    fullWidth
+                    className="mb-2"
+                    InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
+                />
+                <TextField
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    type="password"
+                    size="small"
+                    variant="filled"
+                    label="Mot de passe"
+                    fullWidth
+                    className="mb-2"
+                    InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
+                />
+                <TextField
+                    name="numero_plaque"
+                    value={formData.numero_plaque}
+                    onChange={handleInputChange}
+                    size="small"
+                    variant="filled"
+                    label="Numéro de plaque"
+                    fullWidth
+                    className="mb-2"
+                    InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
+                />
+                <TextField
+                    select
+                    name="user_type_id"
+                    value={formData.user_type_id}
+                    onChange={handleInputChange}
+                    size="small"
+                    variant="filled"
+                    label="Type d'utilisateur"
+                    fullWidth
+                    className="mb-2"
+                    InputProps={{ style: { backgroundColor: 'white', borderRadius: '5px' } }}
+                >
+                    <MenuItem value="">Sélectionnez un type d'utilisateur</MenuItem>
+                    {userTypes.map(userType => (
+                        <MenuItem key={userType.id} value={userType.id}>{userType.libelle}</MenuItem>
+                    ))}
+                </TextField>
+                <button type="submit" className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
+                    Ajouter
+                </button>
+            </form>
         </div>
     );
 }
+
 export default AddZem;

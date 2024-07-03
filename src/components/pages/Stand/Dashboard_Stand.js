@@ -1,228 +1,62 @@
-
-
 import { useMediaQuery } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import '../../../App.css';
-import logo from "../../Images/lg.png";
-import WidgetsIcon from '@mui/icons-material/Widgets';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import PersonIcon from '@mui/icons-material/Person';
-import SettingsIcon from '@mui/icons-material/Settings';
-import HelpIcon from '@mui/icons-material/Help';
-import TextField from '@mui/material/TextField';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import MenuListComposition from '../../DropDown';
-import MoneyIcon from '@mui/icons-material/Money';
-import MenuStand from './MenuStand';
-function FirstPart() {
+import Button from '@mui/material/Button';
+import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import PaymentIcon from '@mui/icons-material/Payment';
+import logo from '../../Images/logo2.png';
+
+function Card({ title, icon, onClick }) {
     return (
-React.createElement(MenuStand,null) 
-   );
+        <div className="flex flex-col items-center w-full max-w-[300px] border border-gray-300 rounded-lg p-4 m-4 bg-black text-black">
+            <div className="flex items-center mb-2">
+                {icon}
+                <div className="text-[#FFDE59] text-[18px] font-semibold ml-2">{title}</div>
+            </div>
+            <Button variant="contained" className="mt-3" style={{ backgroundColor: 'orange', color: 'white' }} onClick={onClick}>
+                Consulter
+            </Button>
+        </div>
+    );
 }
 
-
-function ScndPart() {
+function MainContent() {
+    const navigate = useNavigate(); // Initialize useNavigate
     const isMobile = useMediaQuery('(max-width:700px)');
-    const [isLoggedIn, setIsLoggedIn] = useState(true); // Assume que l'utilisateur est connecté
-
-    const handleLogout = () => {
-        // Code pour gérer la déconnexion de l'utilisateur
-        setIsLoggedIn(false);
-    };
 
     return (
-        <div className={`absolute bg-[#1F1F1F] top-0 border-[#3B3B3B] border-b-2  h-[20%] ${isMobile ? 'left-[0] w-full ' : 'left-[18%] w-[82%] '}`} style={{ backgroundColor: '#333333' }}>
-            <div className={`font-bold text-lg absolute top-[50px] text-white ${isMobile ? 'left-[20%]' : 'left-[15%]'}`}>Dashboard</div>
-            {isMobile && isLoggedIn && <MenuListComposition />}
-            <TextField
-                size="small"
-                variant="filled"
-                label="Rechercher un Zem"
-                placeholder="Entez son Identifiant"
-                InputProps={{ style: { backgroundColor: 'pink', color: 'white' } }} // Change la couleur de fond et de texte de la barre de recherche
-                className={`absolute ${isMobile ? 'left-[45%] top-[0px]' : 'left-[50%] top-[30px]'}`}
-            />
-            <AccountCircleIcon
-                fontSize="large"
-
-                style={{ color: 'blue', cursor: 'pointer' }}
-                className={`absolute top-[36px] ${isMobile ? 'left-[90%]' : 'left-[90%]'}`}
-                onClick={handleLogout} // Ajoute la fonction pour se déconnecter au clic
-            />
-        </div>
-    );
-}
-
-
-function ThirdPart() {
-    const isMobile = useMediaQuery('(max-width:700px)');
-    return (
-        <div className={`overflow-auto absolute top-[20%] bg-[#1F1F1F] h-[100%] ${isMobile ? 'w-full left-0' : 'w-[82%] left-[18%]'}`}>
-            <div className={`border-[#3B3B3B] border-r-2 grid grid-cols-3 gap-10 p-7 ${isMobile ? 'w-full' : 'w-[65%]'} `}>
-                <div className="flex items-center justify-between p-2">
-                    <div className=" grid grid-cols-3 ">
-                        <div className="flex justify-between ">
-                            
-                            <div className="flex flex-col items-center w-[200px] border border-gray-300 rounded-lg p-4 mr-6">
-                                <div className="text-[#FFDE59] text-[14px] font-semibold">Nombre de Client</div>
-                                <div className="text-white text-[16px] flex items-center mt-3">
-                                    <span className="ml-2 text-lg text-white">265 </span>
-                                </div>
-                                <button className="mt-3 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-[14px] font-semibold">Transporteurs</button>
-                            </div>
-                            <div className="flex flex-col items-center w-[200px] border border-gray-300 rounded-lg p-4 mr-6">
-                                <div className="text-[#FFDE59] text-[14px] font-semibold">Nombre de Client</div>
-                                <div className="text-white text-[16px] flex items-center mt-3">
-                                    <span className="ml-2 text-lg text-white">265 </span>
-                                </div>
-                                <button className="mt-3 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-[14px] font-semibold">Transporteurs</button>
-                            </div>
-                            <div className="flex flex-col items-center w-[200px] border border-gray-300 rounded-lg p-4 mr-6">
-                                <div className="text-[#FFDE59] text-[14px] font-semibold">Nombre de Client</div>
-                                <div className="text-white text-[16px] flex items-center mt-3">
-                                    <span className="ml-2 text-lg text-white">265 </span>
-                                </div>
-                                <button className="mt-3 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-[14px] font-semibold">Transporteurs</button>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div className={`border-[#3B3B3B] border-r-2 grid grid-cols-2 gap-10 p-7 ${isMobile ? 'w-full' : 'w-[65%]'} `}>
-            
-            
-                <div className="w-full text-[#FFDE59]">En Cours</div>
-                <div className="w-full text-[#FFDE59]  ml-[70%]">...</div>
-                <div className="w-full h-[150px] rounded-2xl border-2 border-[#3B3B3B] p-2">
-                    <div className="text-white text-[32px]">1000</div>
-                    <div className="text-[#8E8E8E] text-[16px]">courses</div>
-                    <div className="text-[#8E8E8E] text-[16px]">personne</div>
-                    <div className="text-[#FFDE59] text-[80%] ml-[70%]">voir les détails</div>
-                </div>
-                <div className="w-full h-[150px] rounded-2xl border-2 border-[#3B3B3B] p-2">
-                    <div className="text-white text-[32px]">10000</div>
-                    <div className="text-[#8E8E8E] text-[16px]">paiement</div>
-                    <div className="text-[#8E8E8E] text-[16px]">Transporteur</div>
-                    <div className="text-[#FFDE59] text-[80%] ml-[70%]">voir les détails</div>
-                </div>
-                <div className="w-full h-[150px] rounded-2xl border-2 border-[#3B3B3B] p-2">
-                    <div className="text-white text-[32px]">300</div>
-                    <div className="text-[#8E8E8E] text-[16px]">courses</div>
-                    <div className="text-[#8E8E8E] text-[16px]">colis</div>
-                    <div className="text-[#FFDE59] text-[80%] ml-[70%]">voir les détails</div>
-                </div>
-                <div className="w-full h-[150px] rounded-2xl border-2 border-[#3B3B3B] p-2">
-                    <div className="text-white text-[32px]">500</div>
-                    <div className="text-[#8E8E8E] text-[16px]">paiement</div>
-                    <div className="text-[#8E8E8E] text-[16px]">stand</div>
-                    <div className="text-[#FFDE59] text-[80%] ml-[70%]">voir les détails</div>
-                </div>
-                <div className="w-full h-[150px] rounded-2xl border-2 border-[#3B3B3B] p-2">
-                    <div className="text-white text-[32px]">1000</div>
-                    <div className="text-[#8E8E8E] text-[16px]">courses</div>
-                    <div className="text-[#8E8E8E] text-[16px]">personne</div>
-                    <div className="text-[#FFDE59] text-[80%] ml-[70%]">voir les détails</div>
-                </div>
-                <div className="w-full h-[150px] rounded-2xl border-2 border-[#3B3B3B] p-2">
-                    <div className="text-white text-[32px]">10000</div>
-                    <div className="text-[#8E8E8E] text-[16px]">paiement</div>
-                    <div className="text-[#8E8E8E] text-[16px]">Transporteur</div>
-                    <div className="text-[#FFDE59] text-[80%] ml-[70%]">voir les détails</div>
+        <div className={`overflow-auto absolute top-0 bg-[#1F1F1F] h-full ${isMobile ? 'w-full left-0' : 'w-[100%] left-0'}`}>
+            <div className="flex flex-col items-center p-4">
+                <img src={logo} alt="Logo" className="mb-4" style={{ width: '150px' }} />
+                <h3 className="text-[#FFDE59] mb-4">Gestionnaire de stand</h3>
+                <div className="flex flex-wrap justify-center items-center">
+                    <Card
+                        title="Ajouter un Zem"
+                        icon={<DirectionsBikeIcon style={{ color: '#FFDE59', fontSize: '2rem' }} />}
+                        onClick={() => navigate('/AddZem')} // Navigate to /AddZem
+                    />
+                    <Card
+                        title="Ajouter une course"
+                        icon={<DirectionsRunIcon style={{ color: '#FFDE59', fontSize: '2rem' }} />}
+                        onClick={() => navigate('/Trajet')} // Navigate to /Trajet
+                    />
+                    <Card
+                        title="Payer un Zem"
+                        icon={<PaymentIcon style={{ color: '#FFDE59', fontSize: '2rem' }} />}
+                        onClick={() => navigate('/portefeuille')} // Navigate to /portefeuille
+                    />
                 </div>
             </div>
         </div>
     );
 }
-
-
-function FourthPart() {
-    return (
-        
-        <div className="overflow-auto absolute top-[20%] border-[#3B3B3B] border-b-2 bg-[#1F1F1F] h-[80%]  w-[18%] right-[10%]">
-           
-            <div className="flex items-center justify-between p-2">
-                <div className="text-[#FFDE59] text-[80%]">Courses</div>
-                <div className="text-[#FFDE59] text-[80%] ml-[20%]">...</div>
-            </div>
-        
-            <div className="w-full h-[75px] rounded-2xl border-2 border-[#3B3B3B] p-2 flex flex-col justify-center mb-2">
-                <div className="flex justify-between items-center mt-0">
-                    <div className="text-white text-[20px] flex items-center">
-                        <MoneyIcon style={{ color: '#FFDE59', fontSize: '1.5rem' }} />
-                        <span className="ml-2">165f</span>
-                    </div>
-                    <div className="text-[#FFDE59] text-[70%] text-green-500">valider</div>
-                </div>
-                <div className="flex justify-between items-center mt-0">
-                    <div className="text-[#8E8E8E] text-[20px]">topka-kandi</div>
-                    <div className="text-[#8E8E8E] text-[11px]">10/02/2000</div>
-                </div>
-            </div>
-            <div className="w-full h-[75px] rounded-2xl border-2 border-[#3B3B3B] p-2 flex flex-col justify-center mb-2">
-                <div className="flex justify-between items-center mt-0">
-                    <div className="text-white text-[20px] flex items-center">
-                        <MoneyIcon style={{ color: '#FFDE59', fontSize: '1.5rem' }} />
-                        <span className="ml-2">165f</span>
-                    </div>
-                    <div className="text-[#FFDE59] text-[70%] text-green-500">valider</div>
-                </div>
-                <div className="flex justify-between items-center mt-0">
-                    <div className="text-[#8E8E8E] text-[20px]">topka-kandi</div>
-                    <div className="text-[#8E8E8E] text-[11px]">10/02/2000</div>
-                </div>
-            </div>
-            <div className="w-full h-[75px] rounded-2xl border-2 border-[#3B3B3B] p-2 flex flex-col justify-center mb-2">
-                <div className="flex justify-between items-center mt-0">
-                    <div className="text-white text-[20px] flex items-center">
-                        <MoneyIcon style={{ color: '#FFDE59', fontSize: '1.5rem' }} />
-                        <span className="ml-2">165f</span>
-                    </div>
-                    <div className="text-[#FFDE59] text-[70%] text-green-500">valider</div>
-                </div>
-                <div className="flex justify-between items-center mt-0">
-                    <div className="text-[#8E8E8E] text-[20px]">topka-kandi</div>
-                    <div className="text-[#8E8E8E] text-[11px]">10/02/2000</div>
-                </div>
-            </div>
-            <div className="w-full h-[75px] rounded-2xl border-2 border-[#3B3B3B] p-2 flex flex-col justify-center mb-2">
-                <div className="flex justify-between items-center mt-0">
-                    <div className="text-white text-[20px] flex items-center">
-                        <MoneyIcon style={{ color: '#FFDE59', fontSize: '1.5rem' }} />
-                        <span className="ml-2">165f</span>
-                    </div>
-                    <div className="text-[#FFDE59] text-[70%] text-green-500">valider</div>
-                </div>
-                <div className="flex justify-between items-center mt-0">
-                    <div className="text-[#8E8E8E] text-[20px]">topka-kandi</div>
-                    <div className="text-[#8E8E8E] text-[11px]">10/02/2000</div>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-
 
 export default function Dashboard() {
-    const isMobile = useMediaQuery('(max-width:700px)'); // Vous pouvez ajuster la largeur maximale en fonction de votre cas d'utilisation
-
     return (
-        <div className='bg-[#1F1F1F]'>
-            {!isMobile && <FirstPart/>}
-            <div className="flex flex-col w-full">
-                <ScndPart />
-                <div className="flex">
-                    <ThirdPart />
-                    <FourthPart />
-                </div>
-            </div>
+        <div className="bg-[#1F1F1F] min-h-screen flex justify-center items-center">
+            <MainContent />
         </div>
     );
 }

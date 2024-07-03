@@ -31,7 +31,7 @@ import AddTypepage from "./components/pages/Admin/type";
 import AddModuleForm from './components/pages/Admin/add_module';
 import AddFonctionnaliteForm from './components/pages/Admin/fonction';
 import AddTypeUtilisateurForm from './components/pages/Admin/add_typeUser';
-
+import ListUser from './components/pages/Admin/listUser' ;
 
 function App() {
   return (
@@ -61,8 +61,7 @@ function App() {
           <Route path="/addUserType" element={<AddTypeUtilisateurForm/>} />
           <Route path="/mod" element={<AddModulepage/>} />
           <Route path="/type" element={<AddTypepage/>} />
-
-
+          <Route path="/listUser" element={<ListUser/>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/COURSE" element={<MAP />} />
           <Route path="/DELIVER" element={<MAP_TWO />} />
