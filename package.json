@@ -11,10 +11,7 @@
     "@googlemaps/js-api-loader": "^1.16.6",
     "@mui/icons-material": "^5.14.14",
     "@mui/material": "^5.14.14",
-    "@babel/core":"7.24.7",
-    "@babel/preset-env":"7.24.7",
-    "babel-jest": "29.7.0",
-    "@babel/preset-react": "7.24.7",
+    
 
     "@react-google-maps/api": "^2.19.3",
     "@testing-library/jest-dom": "^5.17.0",
