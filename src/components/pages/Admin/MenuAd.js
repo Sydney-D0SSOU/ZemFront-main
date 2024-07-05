@@ -6,7 +6,6 @@ import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HelpIcon from '@mui/icons-material/Help';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import MoneyIcon from '@mui/icons-material/Money';
 import GroupIcon from '@mui/icons-material/Group';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';

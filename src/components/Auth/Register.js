@@ -37,9 +37,9 @@ const DRegistrationForm = () => {
     }
   };
 
-  const togglePasswordVisibility = () => {
+ /* const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-  };
+  };*/
 
 
   return (

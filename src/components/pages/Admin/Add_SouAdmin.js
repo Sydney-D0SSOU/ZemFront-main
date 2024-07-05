@@ -15,7 +15,7 @@ function FirstPart() {
 
 function ScndPart() {
     const isMobile = useMediaQuery('(max-width:700px)');
-    const [isLoggedIn, setIsLoggedIn] = useState(true); // Assume que l'utilisateur est connecté
+    const [isLoggedIn] = useState(true); // Assume que l'utilisateur est connecté
 
    
     const handleLogout = () => {

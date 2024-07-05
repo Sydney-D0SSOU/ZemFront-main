@@ -17,7 +17,6 @@ import ModifierSousAdmin from "./components/pages/Admin/modifierSousAdmin";
 import Dashboard_Zem from "./components/pages/Zem/Dashboard_Zem";
 import Portefeuille from "./components/pages/Stand/Portefeuille";
 import Contact from "./components/Contact";
-import MAP from "./components/Map";
 import MAP_TWO from "./components/Map_two";
 import URegistrationForm from "./components/UserForms/Register";
 import DRegistrationForm from "./components/Auth/Register";
@@ -63,7 +62,6 @@ function App() {
           <Route path="/type" element={<AddTypepage/>} />
           <Route path="/listUser" element={<ListUser/>} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/COURSE" element={<MAP />} />
           <Route path="/DELIVER" element={<MAP_TWO />} />
           <Route path="/profilAdmin" element={<Profil/>} />
           <Route path="/transporter" element={<DLoginForm />} />
