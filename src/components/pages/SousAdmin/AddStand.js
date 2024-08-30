@@ -74,7 +74,7 @@ function ThirdPart() {
 
     const fetchQuartiers = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/quartiers');
+            const response = await fetch('https://emploipourtous.africa/api/quartiers');
     
             if (!response.ok) {
                 throw new Error('Une erreur s\'est produite lors de la récupération des quartiers');
@@ -102,7 +102,7 @@ function ThirdPart() {
         e.preventDefault();
     
         try {
-            const response = await fetch('http://localhost:8000/api/stands', {
+            const response = await fetch('https://emploipourtous.africa/api/stands', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

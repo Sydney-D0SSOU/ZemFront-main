@@ -30,7 +30,7 @@ function AddZem() {
 
     const fetchUserTypes = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/user-types');
+            const response = await axios.get('https://emploipourtous.africa/api/user-types');
             setUserTypes(response.data);
         } catch (error) {
             console.error('Error fetching user types:', error);
@@ -52,7 +52,7 @@ function AddZem() {
                 ...formData,
                 added_by: user.user.id
             };
-            await axios.post('http://localhost:8000/api/users', formDataWithUser);
+            await axios.post('https://emploipourtous.africa/api/users', formDataWithUser);
             console.log('Un zem ajouté avec succès', user.user.id, formDataWithUser);
             Swal.fire({
                 icon: 'success',

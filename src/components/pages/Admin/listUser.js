@@ -10,7 +10,7 @@ function ListUser() {
     useEffect(() => {
         const fetchUserList = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/users');
+                const response = await axios.get('https://emploipourtous.africa/api/users');
                 setUserList(response.data);
             } catch (error) {
                 console.error('Une erreur s\'est produite lors de la récupération de la liste des utilisateurs :', error);

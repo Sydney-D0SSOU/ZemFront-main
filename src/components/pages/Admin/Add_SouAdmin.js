@@ -72,7 +72,7 @@ function AddSoAdmin() {
 
     const fetchUserTypes = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/user-types');
+            const response = await axios.get('https://emploipourtous.africa/api/user-types');
             setUserTypes(response.data);
         } catch (error) {
             console.error('Error fetching user types:', error);
@@ -90,7 +90,7 @@ function AddSoAdmin() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8000/api/users', formData);
+            await axios.post('https://emploipourtous.africa/api/users', formData);
             console.log('Sous-administrateur ajouté avec succès');
             // Afficher une alerte de succès avec SweetAlert
             Swal.fire({

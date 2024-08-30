@@ -12,7 +12,7 @@ function AddModuleForm() {
     useEffect(() => {
         async function fetchFonctionnalites() {
             try {
-                const response = await axios.get('http://localhost:8000/api/fonctionnalites');
+                const response = await axios.get('https://emploipourtous.africa/api/fonctionnalites');
                 setFonctionnalites(response.data);
             } catch (error) {
                 console.error('Error fetching fonctionnalites:', error);
@@ -33,7 +33,7 @@ function AddModuleForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8000/api/modules', { libelle: libModule, fonctionnalite_id: fonctionnaliteId });
+            await axios.post('https://emploipourtous.africa/api/modules', { libelle: libModule, fonctionnalite_id: fonctionnaliteId });
             console.log('Module ajouté avec succès');
             setLibModule('');
             setFonctionnaliteId('');

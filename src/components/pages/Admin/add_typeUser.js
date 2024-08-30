@@ -12,7 +12,7 @@ function AddTypeUtilisateurForm() {
     useEffect(() => {
         async function fetchModules() {
             try {
-                const response = await axios.get('http://localhost:8000/api/modules');
+                const response = await axios.get('https://emploipourtous.africa/api/modules');
                 setModules(response.data);
             } catch (error) {
                 console.error('Error fetching modules:', error);
@@ -33,7 +33,7 @@ function AddTypeUtilisateurForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8000/api/user-types', { libelle: libTypeUtilisateur, idModule });
+            await axios.post('https://emploipourtous.africa/api/user-types', { libelle: libTypeUtilisateur, idModule });
             console.log('Type utilisateur ajouté avec succès');
             setLibTypeUtilisateur('');
             setIdModule('');

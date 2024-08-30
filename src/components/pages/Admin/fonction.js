@@ -13,7 +13,7 @@ function AddFonctionnaliteForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8000/api/fonctionnalites', { libFonction });
+            await axios.post('https://emploipourtous.africa/api/fonctionnalites', { libFonction });
             console.log('Fonctionnalité ajoutée avec succès');
             setLibFonction('');
             showAlert('success', 'Fonctionnalité ajoutée avec succès');

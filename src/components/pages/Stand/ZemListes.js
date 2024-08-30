@@ -67,7 +67,7 @@ function ThirdPart() {
     useEffect(() => {
         const fetchZemList = async () => {
             try {
-                const response = await axios.post('http://localhost:8000/api/zems-listes');
+                const response = await axios.post('https://emploipourtous.africa/api/zems-listes');
                 const zemData = response.data.zem;
                 console.log('Données ZEM récupérées avec succès :', zemData);
                 setZemList(zemData);

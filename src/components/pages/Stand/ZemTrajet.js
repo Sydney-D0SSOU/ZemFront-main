@@ -44,7 +44,7 @@ function TrajetForm({ onSubmit }) {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('http://localhost:8000/api/abonnements', formData);
+      await axios.post('https://emploipourtous.africa/api/abonnements', formData);
       setLoading(false);
       showAlert('success', 'Trajet enregistré avec succès');
       onSubmit();
@@ -57,7 +57,7 @@ function TrajetForm({ onSubmit }) {
 
   const searchZem = async (numeroPlaque) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/users/search/${numeroPlaque}`);
+      const response = await axios.get(`https://emploipourtous.africa/api/users/search/${numeroPlaque}`);
       const zemId = response.data.id;
       setFormData({
         ...formData,
